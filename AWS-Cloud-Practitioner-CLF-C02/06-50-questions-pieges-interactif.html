@@ -1,0 +1,393 @@
+<!doctype html><html lang="fr"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>50 questions pièges CLF-C02</title><style>
+:root{--bg:#fff;--fg:#1a1a1a;--muted:#5f6b7a;--accent:#c45500;--line:#d5dbe1;--panel:#f4f6f8;--quote:#eef7ee;--qborder:#2e8b57;--th:#232f3e;--thfg:#fff;--zebra:#f7f7f7;--ok:#1d8102;--ko:#d13212}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#16191f;--fg:#e8e8e8;--muted:#a3adb8;--accent:#ff9900;--line:#3a4552;--panel:#1d232b;--quote:#1d2b22;--qborder:#3fae6b;--th:#2b3645;--thfg:#fff;--zebra:#1d2128;--ok:#6cc04a;--ko:#ff6b5a}}
+:root[data-theme="dark"]{--bg:#16191f;--fg:#e8e8e8;--muted:#a3adb8;--accent:#ff9900;--line:#3a4552;--panel:#1d232b;--quote:#1d2b22;--qborder:#3fae6b;--th:#2b3645;--thfg:#fff;--zebra:#1d2128;--ok:#6cc04a;--ko:#ff6b5a}
+*{box-sizing:border-box}
+body{background:var(--bg);color:var(--fg);font:16px/1.6 -apple-system,"Segoe UI",Helvetica,Arial,sans-serif;max-width:960px;margin:0 auto;padding:24px 16px}
+h1{color:var(--accent);border-bottom:3px solid var(--accent);padding-bottom:6px;margin-top:2em}
+h2{border-bottom:1px solid var(--line);padding-bottom:4px;margin-top:1.8em}
+table{border-collapse:collapse;width:100%;margin:12px 0;font-size:14px;display:block;overflow-x:auto}
+th{background:var(--th);color:var(--thfg)}th,td{border:1px solid var(--line);padding:6px 8px;text-align:left;vertical-align:top}
+tr:nth-child(even) td{background:var(--zebra)}
+blockquote{background:var(--quote);border-left:4px solid var(--qborder);margin:8px 0 18px;padding:6px 14px;border-radius:4px}
+.cover{text-align:center;padding:60px 0 30px}.cover h1{border:0;font-size:2.2em}
+nav.toc{background:var(--panel);border:1px solid var(--line);border-radius:10px;padding:12px 18px}
+nav.toc a{color:var(--fg)}
+@media print{body{max-width:none;font-size:12px}.page{break-before:page}.qcard,tr{break-inside:avoid}table{display:table}.quiz-bar{display:none}}
+
+.quiz-bar{position:sticky;top:0;z-index:5;display:flex;flex-wrap:wrap;gap:8px 16px;align-items:center;background:var(--panel);border:1px solid var(--line);border-radius:10px;padding:8px 14px;margin:12px 0 20px;font-size:14px}
+.quiz-bar .sc{font-weight:700}.quiz-bar button,.qcard button.check,.keybtn{font:inherit;font-size:14px;border-radius:8px;border:1px solid var(--line);background:var(--bg);color:var(--fg);padding:6px 12px;cursor:pointer}
+.quiz-bar .timer{font-variant-numeric:tabular-nums;font-weight:700;color:var(--accent)}
+.qcard{border:1px solid var(--line);border-radius:10px;padding:14px 16px;margin:14px 0;background:var(--bg)}
+.qcard .qt{margin:0 0 10px}.qcard .qid{font-weight:700;color:var(--accent);margin-right:4px}
+.opts{display:flex;flex-direction:column;gap:6px}
+.opt{font:inherit;text-align:left;border:1.5px solid var(--line);background:var(--bg);color:var(--fg);border-radius:8px;padding:8px 12px;cursor:pointer}
+.opt:hover{border-color:var(--accent)}
+.opt.sel{border-color:var(--accent);background:color-mix(in srgb,var(--accent) 12%,var(--bg))}
+.opt.good{border-color:var(--ok);background:color-mix(in srgb,var(--ok) 16%,var(--bg))}
+.opt.bad{border-color:var(--ko);background:color-mix(in srgb,var(--ko) 14%,var(--bg))}
+.qcard.done .opt{cursor:default}
+.qcard button.check{margin-top:10px;background:var(--accent);color:#fff;border-color:var(--accent);font-weight:600}
+.qcard button.check:disabled{opacity:.4;cursor:not-allowed}
+.qcard textarea{width:100%;min-height:70px;font:inherit;font-size:14px;border:1.5px solid var(--line);border-radius:8px;padding:8px;background:var(--bg);color:var(--fg)}
+.hint{font-size:12px;color:var(--muted);margin-left:8px}
+.fb{font-weight:700;margin-top:10px}.fb.ok{color:var(--ok)}.fb.ko{color:var(--ko)}
+.ans{margin-top:10px;padding:10px 14px;border-left:4px solid var(--ok);background:color-mix(in srgb,var(--ok) 8%,var(--bg));border-radius:6px}
+.ans>:first-child{margin-top:0}.ans>:last-child{margin-bottom:0}
+.keybtn:disabled{opacity:.4;cursor:not-allowed}
+.printkey{font-size:13px}
+</style></head><body><div class="quiz"><div class="quiz-bar"><span class="sc"></span><button type="button" class="reset">↺ Recommencer</button></div><h1>50 questions pièges CLF-C02 — celles qui font échouer le plus de candidats</h1>
+<blockquote>
+<p><strong>Version interactive recommandée :</strong> <code>06-50-questions-pieges-interactif.html</code> (réponses masquées jusqu'à votre validation).
+Ces questions ciblent les <strong>confusions les plus fréquentes</strong> : services qui se ressemblent, responsabilité partagée,
+options d'achat, plans de support, classes de stockage. Lisez chaque mot de la question : le piège est souvent dans un détail.</p>
+</blockquote>
+<hr /><div class="qcard" data-answer="D"><p class="qt"><span class="qid">1.</span> Une entreprise veut bloquer les tentatives d'injection SQL ciblant son Application Load Balancer. Quel service utiliser ?</p><div class="opts"><button type="button" class="opt" data-l="A">A. AWS Shield Standard</button><button type="button" class="opt" data-l="B">B. Amazon GuardDuty</button><button type="button" class="opt" data-l="C">C. AWS Shield Advanced</button><button type="button" class="opt" data-l="D">D. AWS WAF</button></div><button type="button" class="check" disabled>Valider et voir la réponse</button><span class="hint">Choisissez une réponse</span><div class="fb" hidden></div><div class="ans" hidden><p>✅ <b>Réponse : D</b> — WAF filtre la couche 7 (SQLi, XSS). Piège : Shield protège contre le DDoS, pas contre l'injection SQL.</p></div></div><div class="qcard" data-answer="A"><p class="qt"><span class="qid">2.</span> Quel est l'objectif PRINCIPAL d'un déploiement Amazon RDS Multi-AZ ?</p><div class="opts"><button type="button" class="opt" data-l="A">A. Assurer la haute disponibilité grâce à une instance de secours synchrone et un basculement automatique</button><button type="button" class="opt" data-l="B">B. Améliorer les performances de lecture</button><button type="button" class="opt" data-l="C">C. Répliquer la base vers une autre Région</button><button type="button" class="opt" data-l="D">D. Réduire le coût de la base de données</button></div><button type="button" class="check" disabled>Valider et voir la réponse</button><span class="hint">Choisissez une réponse</span><div class="fb" hidden></div><div class="ans" hidden><p>✅ <b>Réponse : A</b> — Multi-AZ = disponibilité. Piège : le standby ne sert pas les lectures ; pour la performance, ce sont les Read Replicas.</p></div></div><div class="qcard" data-answer="B"><p class="qt"><span class="qid">3.</span> Qui est responsable de l'application des correctifs du système d'exploitation invité d'une instance Amazon EC2 ?</p><div class="opts"><button type="button" class="opt" data-l="A">A. AWS</button><button type="button" class="opt" data-l="B">B. Le client</button><button type="button" class="opt" data-l="C">C. AWS Support</button><button type="button" class="opt" data-l="D">D. Le partenaire APN qui a vendu l'AMI</button></div><button type="button" class="check" disabled>Valider et voir la réponse</button><span class="hint">Choisissez une réponse</span><div class="fb" hidden></div><div class="ans" hidden><p>✅ <b>Réponse : B</b> — Sur EC2 (IaaS), l'OS invité est géré par le client. AWS s'occupe de l'hyperviseur et du matériel.</p></div></div><div class="qcard" data-answer="C"><p class="qt"><span class="qid">4.</span> Quel est le plan de support AWS le MOINS cher offrant un accès 24h/24 et 7j/7 aux ingénieurs support par téléphone ?</p><div class="opts"><button type="button" class="opt" data-l="A">A. Developer</button><button type="button" class="opt" data-l="B">B. Enterprise On-Ramp</button><button type="button" class="opt" data-l="C">C. Business</button><button type="button" class="opt" data-l="D">D. Basic</button></div><button type="button" class="check" disabled>Valider et voir la réponse</button><span class="hint">Choisissez une réponse</span><div class="fb" hidden></div><div class="ans" hidden><p>✅ <b>Réponse : C</b> — Business est le premier plan avec téléphone 24/7. Piège : Developer = e-mail, heures ouvrables seulement.</p></div></div><div class="qcard" data-answer="C"><p class="qt"><span class="qid">5.</span> Une base Amazon RDS est surchargée par des requêtes de lecture issues de rapports. Quelle solution améliore les performances ?</p><div class="opts"><button type="button" class="opt" data-l="A">A. Activer Multi-AZ</button><button type="button" class="opt" data-l="B">B. Augmenter la taille du stockage</button><button type="button" class="opt" data-l="C">C. Créer des réplicas en lecture (Read Replicas)</button><button type="button" class="opt" data-l="D">D. Prendre des snapshots plus fréquents</button></div><button type="button" class="check" disabled>Valider et voir la réponse</button><span class="hint">Choisissez une réponse</span><div class="fb" hidden></div><div class="ans" hidden><p>✅ <b>Réponse : C</b> — Les Read Replicas déchargent les lectures. Piège classique : Multi-AZ ne change rien aux performances de lecture.</p></div></div><div class="qcard" data-answer="B"><p class="qt"><span class="qid">6.</span> Une instance EC2 a été compromise et mine des cryptomonnaies en communiquant avec des serveurs malveillants. Quel service détecte ce comportement ?</p><div class="opts"><button type="button" class="opt" data-l="A">A. Amazon Inspector</button><button type="button" class="opt" data-l="B">B. Amazon GuardDuty</button><button type="button" class="opt" data-l="C">C. Amazon Macie</button><button type="button" class="opt" data-l="D">D. AWS Config</button></div><button type="button" class="check" disabled>Valider et voir la réponse</button><span class="hint">Choisissez une réponse</span><div class="fb" hidden></div><div class="ans" hidden><p>✅ <b>Réponse : B</b> — GuardDuty détecte une activité malveillante en cours (logs VPC Flow, DNS, CloudTrail).</p></div></div><div class="qcard" data-answer="A"><p class="qt"><span class="qid">7.</span> Une équipe veut identifier automatiquement les logiciels non patchés présentant des vulnérabilités connues (CVE) sur ses instances EC2. Quel service ?</p><div class="opts"><button type="button" class="opt" data-l="A">A. Amazon Inspector</button><button type="button" class="opt" data-l="B">B. Amazon GuardDuty</button><button type="button" class="opt" data-l="C">C. AWS Trusted Advisor</button><button type="button" class="opt" data-l="D">D. AWS Shield</button></div><button type="button" class="check" disabled>Valider et voir la réponse</button><span class="hint">Choisissez une réponse</span><div class="fb" hidden></div><div class="ans" hidden><p>✅ <b>Réponse : A</b> — Inspector recherche les vulnérabilités logicielles. Piège : GuardDuty détecte des menaces, pas des CVE.</p></div></div><div class="qcard" data-answer="D"><p class="qt"><span class="qid">8.</span> Une entreprise utilise EC2, AWS Fargate et AWS Lambda. Elle veut une remise en échange d'un engagement d'usage, tout en gardant la flexibilité de changer de famille d'instance et de Région. Quelle option ?</p><div class="opts"><button type="button" class="opt" data-l="A">A. EC2 Instance Savings Plan</button><button type="button" class="opt" data-l="B">B. Instances réservées standard</button><button type="button" class="opt" data-l="C">C. Instances réservées convertibles</button><button type="button" class="opt" data-l="D">D. Compute Savings Plan</button></div><button type="button" class="check" disabled>Valider et voir la réponse</button><span class="hint">Choisissez une réponse</span><div class="fb" hidden></div><div class="ans" hidden><p>✅ <b>Réponse : D</b> — Seul le Compute Savings Plan couvre EC2, Fargate et Lambda, toutes familles et Régions.</p></div></div><div class="qcard" data-answer="B"><p class="qt"><span class="qid">9.</span> Quelle affirmation sur les Security Groups est correcte ?</p><div class="opts"><button type="button" class="opt" data-l="A">A. Ils sont sans état et permettent des règles de refus</button><button type="button" class="opt" data-l="B">B. Ils sont avec état et n'autorisent que des règles d'autorisation</button><button type="button" class="opt" data-l="C">C. Ils s'appliquent au niveau du sous-réseau</button><button type="button" class="opt" data-l="D">D. Leurs règles sont évaluées dans l'ordre de leur numéro</button></div><button type="button" class="check" disabled>Valider et voir la réponse</button><span class="hint">Choisissez une réponse</span><div class="fb" hidden></div><div class="ans" hidden><p>✅ <b>Réponse : B</b> — Security Group : avec état, Allow uniquement, niveau instance. Les autres propositions décrivent une NACL.</p></div></div><div class="qcard" data-answer="A,C"><p class="qt"><span class="qid">10.</span> Quels services utilisent les Edge Locations AWS ? (Choisissez-en deux.)</p><div class="opts"><button type="button" class="opt" data-l="A">A. Amazon CloudFront</button><button type="button" class="opt" data-l="B">B. Amazon RDS</button><button type="button" class="opt" data-l="C">C. Amazon Route 53</button><button type="button" class="opt" data-l="D">D. Amazon EBS</button><button type="button" class="opt" data-l="E">E. Amazon EFS</button></div><button type="button" class="check" disabled>Valider et voir la réponse</button><span class="hint">Choisissez 2 réponses</span><div class="fb" hidden></div><div class="ans" hidden><p>✅ <b>Réponse : A, C</b> — CloudFront (cache) et Route 53 (DNS) s'appuient sur les Edge Locations, tout comme Shield et WAF.</p></div></div><div class="qcard" data-answer="C"><p class="qt"><span class="qid">11.</span> Pour AWS Lambda, laquelle de ces tâches N'EST PAS de la responsabilité du client ?</p><div class="opts"><button type="button" class="opt" data-l="A">A. Le code de la fonction</button><button type="button" class="opt" data-l="B">B. Les permissions IAM de la fonction</button><button type="button" class="opt" data-l="C">C. Les correctifs du système d'exploitation de l'environnement d'exécution</button><button type="button" class="opt" data-l="D">D. Les données traitées par la fonction</button></div><button type="button" class="check" disabled>Valider et voir la réponse</button><span class="hint">Choisissez une réponse</span><div class="fb" hidden></div><div class="ans" hidden><p>✅ <b>Réponse : C</b> — Lambda est serverless : AWS gère l'OS et le runtime. Le client garde code, permissions et données.</p></div></div><div class="qcard" data-answer="A"><p class="qt"><span class="qid">12.</span> Quel outil génère la liste de tous les utilisateurs IAM d'un compte avec l'état de leurs mots de passe, clés d'accès et MFA ?</p><div class="opts"><button type="button" class="opt" data-l="A">A. IAM Credential Report</button><button type="button" class="opt" data-l="B">B. IAM Access Advisor</button><button type="button" class="opt" data-l="C">C. IAM Access Analyzer</button><button type="button" class="opt" data-l="D">D. AWS CloudTrail</button></div><button type="button" class="check" disabled>Valider et voir la réponse</button><span class="hint">Choisissez une réponse</span><div class="fb" hidden></div><div class="ans" hidden><p>✅ <b>Réponse : A</b> — Credential Report = niveau compte, tous les utilisateurs. Piège : Access Advisor montre les services utilisés par une identité.</p></div></div><div class="qcard" data-answer="B"><p class="qt"><span class="qid">13.</span> Qui décide de la Région AWS dans laquelle les données d'un client sont stockées ?</p><div class="opts"><button type="button" class="opt" data-l="A">A. AWS, automatiquement selon la charge</button><button type="button" class="opt" data-l="B">B. Le client</button><button type="button" class="opt" data-l="C">C. AWS Support</button><button type="button" class="opt" data-l="D">D. L'équipe conformité d'AWS</button></div><button type="button" class="check" disabled>Valider et voir la réponse</button><span class="hint">Choisissez une réponse</span><div class="fb" hidden></div><div class="ans" hidden><p>✅ <b>Réponse : B</b> — Le client choisit la Région ; AWS ne déplace pas les données sans action du client.</p></div></div><div class="qcard" data-answer="C"><p class="qt"><span class="qid">14.</span> Quel est le plan de support le MOINS cher donnant accès à l'ensemble des contrôles AWS Trusted Advisor ?</p><div class="opts"><button type="button" class="opt" data-l="A">A. Basic</button><button type="button" class="opt" data-l="B">B. Developer</button><button type="button" class="opt" data-l="C">C. Business</button><button type="button" class="opt" data-l="D">D. Enterprise</button></div><button type="button" class="check" disabled>Valider et voir la réponse</button><span class="hint">Choisissez une réponse</span><div class="fb" hidden></div><div class="ans" hidden><p>✅ <b>Réponse : C</b> — Tous les contrôles Trusted Advisor dès le plan Business. Basic et Developer n'ont que les contrôles de base.</p></div></div><div class="qcard" data-answer="B"><p class="qt"><span class="qid">15.</span> Un responsable financier veut recevoir un e-mail dès que les dépenses PRÉVUES du mois dépassent 5 000 $. Quel service ?</p><div class="opts"><button type="button" class="opt" data-l="A">A. AWS Cost Explorer</button><button type="button" class="opt" data-l="B">B. AWS Budgets</button><button type="button" class="opt" data-l="C">C. AWS Pricing Calculator</button><button type="button" class="opt" data-l="D">D. AWS Cost and Usage Report</button></div><button type="button" class="check" disabled>Valider et voir la réponse</button><span class="hint">Choisissez une réponse</span><div class="fb" hidden></div><div class="ans" hidden><p>✅ <b>Réponse : B</b> — Budgets envoie des alertes sur les coûts réels ou prévus. Piège : Cost Explorer analyse mais n'alerte pas.</p></div></div><div class="qcard" data-answer="A"><p class="qt"><span class="qid">16.</span> Une entreprise n'a encore rien déployé sur AWS et veut estimer le coût mensuel de son architecture cible. Quel outil ?</p><div class="opts"><button type="button" class="opt" data-l="A">A. AWS Pricing Calculator</button><button type="button" class="opt" data-l="B">B. AWS Cost Explorer</button><button type="button" class="opt" data-l="C">C. AWS Budgets</button><button type="button" class="opt" data-l="D">D. AWS Trusted Advisor</button></div><button type="button" class="check" disabled>Valider et voir la réponse</button><span class="hint">Choisissez une réponse</span><div class="fb" hidden></div><div class="ans" hidden><p>✅ <b>Réponse : A</b> — Rien n'est encore déployé : seul le Pricing Calculator permet d'estimer. Cost Explorer s'appuie sur des dépenses existantes.</p></div></div><div class="qcard" data-answer="B"><p class="qt"><span class="qid">17.</span> Laquelle de ces tâches ne peut être effectuée QUE par l'utilisateur root ?</p><div class="opts"><button type="button" class="opt" data-l="A">A. Lancer une instance EC2</button><button type="button" class="opt" data-l="B">B. Fermer le compte AWS</button><button type="button" class="opt" data-l="C">C. Créer un groupe IAM</button><button type="button" class="opt" data-l="D">D. Consulter les journaux CloudTrail</button></div><button type="button" class="check" disabled>Valider et voir la réponse</button><span class="hint">Choisissez une réponse</span><div class="fb" hidden></div><div class="ans" hidden><p>✅ <b>Réponse : B</b> — Fermer le compte est réservé au root, comme modifier les paramètres du compte ou restaurer des permissions IAM.</p></div></div><div class="qcard" data-answer="D"><p class="qt"><span class="qid">18.</span> Lequel de ces transferts de données est GRATUIT ?</p><div class="opts"><button type="button" class="opt" data-l="A">A. D'Amazon EC2 vers Internet</button><button type="button" class="opt" data-l="B">B. Entre deux Régions AWS</button><button type="button" class="opt" data-l="C">C. D'une instance EC2 vers une autre AZ</button><button type="button" class="opt" data-l="D">D. D'Internet vers AWS (trafic entrant)</button></div><button type="button" class="check" disabled>Valider et voir la réponse</button><span class="hint">Choisissez une réponse</span><div class="fb" hidden></div><div class="ans" hidden><p>✅ <b>Réponse : D</b> — Le trafic entrant est gratuit. Sortie vers Internet, inter-Régions et inter-AZ sont facturés.</p></div></div><div class="qcard" data-answer="C"><p class="qt"><span class="qid">19.</span> Un site ajoute automatiquement des serveurs pendant les pics et les supprime quand le trafic baisse. Quel concept cela illustre-t-il ?</p><div class="opts"><button type="button" class="opt" data-l="A">A. Haute disponibilité</button><button type="button" class="opt" data-l="B">B. Tolérance aux pannes</button><button type="button" class="opt" data-l="C">C. Élasticité</button><button type="button" class="opt" data-l="D">D. Agilité</button></div><button type="button" class="check" disabled>Valider et voir la réponse</button><span class="hint">Choisissez une réponse</span><div class="fb" hidden></div><div class="ans" hidden><p>✅ <b>Réponse : C</b> — Élasticité = ajuster automatiquement à la hausse ET à la baisse. Piège : la scalabilité seule n'implique pas la réduction.</p></div></div><div class="qcard" data-answer="B"><p class="qt"><span class="qid">20.</span> Un logiciel est licencié par socket physique et l'entreprise veut réutiliser ses licences existantes. Quelle option EC2 ?</p><div class="opts"><button type="button" class="opt" data-l="A">A. Instances dédiées</button><button type="button" class="opt" data-l="B">B. Hôtes dédiés</button><button type="button" class="opt" data-l="C">C. Instances Spot</button><button type="button" class="opt" data-l="D">D. Instances réservées</button></div><button type="button" class="check" disabled>Valider et voir la réponse</button><span class="hint">Choisissez une réponse</span><div class="fb" hidden></div><div class="ans" hidden><p>✅ <b>Réponse : B</b> — Les Dedicated Hosts donnent la visibilité sur les sockets et cœurs physiques (BYOL). Les instances dédiées ne le permettent pas.</p></div></div><div class="qcard" data-answer="A"><p class="qt"><span class="qid">21.</span> Selon le modèle de responsabilité partagée, qui configure les politiques de bucket Amazon S3 ?</p><div class="opts"><button type="button" class="opt" data-l="A">A. Le client</button><button type="button" class="opt" data-l="B">B. AWS</button><button type="button" class="opt" data-l="C">C. Les deux à parts égales</button><button type="button" class="opt" data-l="D">D. Personne, elles sont fixées par défaut</button></div><button type="button" class="check" disabled>Valider et voir la réponse</button><span class="hint">Choisissez une réponse</span><div class="fb" hidden></div><div class="ans" hidden><p>✅ <b>Réponse : A</b> — Configurer les accès aux données (politiques de bucket, ACL, Block Public Access) est toujours la responsabilité du client.</p></div></div><div class="qcard" data-answer="C"><p class="qt"><span class="qid">22.</span> Combien de zones de disponibilité une Région AWS comprend-elle au MINIMUM ?</p><div class="opts"><button type="button" class="opt" data-l="A">A. 1</button><button type="button" class="opt" data-l="B">B. 2</button><button type="button" class="opt" data-l="C">C. 3</button><button type="button" class="opt" data-l="D">D. 4</button></div><button type="button" class="check" disabled>Valider et voir la réponse</button><span class="hint">Choisissez une réponse</span><div class="fb" hidden></div><div class="ans" hidden><p>✅ <b>Réponse : C</b> — Minimum 3 AZ par Région (certaines en ont plus).</p></div></div><div class="qcard" data-answer="B"><p class="qt"><span class="qid">23.</span> Une application doit stocker des clés d'API tierces et en effectuer la rotation automatique. Quel service ?</p><div class="opts"><button type="button" class="opt" data-l="A">A. AWS KMS</button><button type="button" class="opt" data-l="B">B. AWS Secrets Manager</button><button type="button" class="opt" data-l="C">C. AWS Systems Manager Parameter Store</button><button type="button" class="opt" data-l="D">D. AWS Certificate Manager</button></div><button type="button" class="check" disabled>Valider et voir la réponse</button><span class="hint">Choisissez une réponse</span><div class="fb" hidden></div><div class="ans" hidden><p>✅ <b>Réponse : B</b> — Secrets Manager = rotation automatique. Piège : Parameter Store stocke mais ne fait pas de rotation native ; KMS gère des clés de chiffrement.</p></div></div><div class="qcard" data-answer="D"><p class="qt"><span class="qid">24.</span> Un auditeur demande le rapport SOC 2 d'AWS. Où le client peut-il le télécharger ?</p><div class="opts"><button type="button" class="opt" data-l="A">A. AWS Audit Manager</button><button type="button" class="opt" data-l="B">B. AWS Security Hub</button><button type="button" class="opt" data-l="C">C. AWS Config</button><button type="button" class="opt" data-l="D">D. AWS Artifact</button></div><button type="button" class="check" disabled>Valider et voir la réponse</button><span class="hint">Choisissez une réponse</span><div class="fb" hidden></div><div class="ans" hidden><p>✅ <b>Réponse : D</b> — Artifact fournit les rapports de conformité d'AWS. Piège : Audit Manager prépare VOS audits.</p></div></div><div class="qcard" data-answer="A"><p class="qt"><span class="qid">25.</span> Un bucket S3 a été supprimé. Quel service indique quel utilisateur a effectué la suppression ?</p><div class="opts"><button type="button" class="opt" data-l="A">A. AWS CloudTrail</button><button type="button" class="opt" data-l="B">B. Amazon CloudWatch</button><button type="button" class="opt" data-l="C">C. AWS Config</button><button type="button" class="opt" data-l="D">D. Amazon Macie</button></div><button type="button" class="check" disabled>Valider et voir la réponse</button><span class="hint">Choisissez une réponse</span><div class="fb" hidden></div><div class="ans" hidden><p>✅ <b>Réponse : A</b> — CloudTrail enregistre qui a fait quel appel d'API. Piège : Config montre l'état de la ressource, pas l'auteur.</p></div></div><div class="qcard" data-answer="D"><p class="qt"><span class="qid">26.</span> Une entreprise veut savoir quand une ressource devient non conforme à ses règles internes (ex. volume EBS non chiffré) et conserver l'historique de sa configuration. Quel service ?</p><div class="opts"><button type="button" class="opt" data-l="A">A. Amazon CloudWatch</button><button type="button" class="opt" data-l="B">B. AWS CloudTrail</button><button type="button" class="opt" data-l="C">C. Amazon Inspector</button><button type="button" class="opt" data-l="D">D. AWS Config</button></div><button type="button" class="check" disabled>Valider et voir la réponse</button><span class="hint">Choisissez une réponse</span><div class="fb" hidden></div><div class="ans" hidden><p>✅ <b>Réponse : D</b> — Config évalue la conformité et garde l'historique de configuration.</p></div></div><div class="qcard" data-answer="B"><p class="qt"><span class="qid">27.</span> Quel service répartit le trafic entrant entre plusieurs instances EC2 situées dans plusieurs zones de disponibilité ?</p><div class="opts"><button type="button" class="opt" data-l="A">A. Amazon Route 53</button><button type="button" class="opt" data-l="B">B. Elastic Load Balancing</button><button type="button" class="opt" data-l="C">C. Amazon CloudFront</button><button type="button" class="opt" data-l="D">D. AWS Global Accelerator</button></div><button type="button" class="check" disabled>Valider et voir la réponse</button><span class="hint">Choisissez une réponse</span><div class="fb" hidden></div><div class="ans" hidden><p>✅ <b>Réponse : B</b> — ELB répartit le trafic entre instances et AZ. Piège : Route 53 fait du routage DNS, pas de l'équilibrage de charge au niveau des instances.</p></div></div><div class="qcard" data-answer="B"><p class="qt"><span class="qid">28.</span> Un même message doit être envoyé simultanément à plusieurs abonnés (e-mail, SMS et une fonction Lambda). Quel service ?</p><div class="opts"><button type="button" class="opt" data-l="A">A. Amazon SQS</button><button type="button" class="opt" data-l="B">B. Amazon SNS</button><button type="button" class="opt" data-l="C">C. Amazon SES</button><button type="button" class="opt" data-l="D">D. AWS Step Functions</button></div><button type="button" class="check" disabled>Valider et voir la réponse</button><span class="hint">Choisissez une réponse</span><div class="fb" hidden></div><div class="ans" hidden><p>✅ <b>Réponse : B</b> — SNS = publication/abonnement (fan-out). SQS = file d'attente consommée par un traitement. SES = e-mails uniquement.</p></div></div><div class="qcard" data-answer="A"><p class="qt"><span class="qid">29.</span> Quelle est la solution la plus simple et la moins chère pour héberger un site web composé uniquement de HTML, CSS et images ?</p><div class="opts"><button type="button" class="opt" data-l="A">A. Amazon S3</button><button type="button" class="opt" data-l="B">B. Amazon EC2</button><button type="button" class="opt" data-l="C">C. Amazon Lightsail</button><button type="button" class="opt" data-l="D">D. AWS Elastic Beanstalk</button></div><button type="button" class="check" disabled>Valider et voir la réponse</button><span class="hint">Choisissez une réponse</span><div class="fb" hidden></div><div class="ans" hidden><p>✅ <b>Réponse : A</b> — Site statique = hébergement de site web S3 (souvent avec CloudFront). Pas de serveur à gérer.</p></div></div><div class="qcard" data-answer="C"><p class="qt"><span class="qid">30.</span> Des données sont rarement consultées mais doivent être disponibles en quelques millisecondes et résister à la perte d'une AZ. Quelle classe S3 ?</p><div class="opts"><button type="button" class="opt" data-l="A">A. S3 One Zone-IA</button><button type="button" class="opt" data-l="B">B. S3 Glacier Flexible Retrieval</button><button type="button" class="opt" data-l="C">C. S3 Standard-IA</button><button type="button" class="opt" data-l="D">D. S3 Glacier Deep Archive</button></div><button type="button" class="check" disabled>Valider et voir la réponse</button><span class="hint">Choisissez une réponse</span><div class="fb" hidden></div><div class="ans" hidden><p>✅ <b>Réponse : C</b> — Standard-IA : accès rare, millisecondes, multi-AZ. Piège : One Zone-IA ne résiste pas à la perte d'une AZ.</p></div></div><div class="qcard" data-answer="A"><p class="qt"><span class="qid">31.</span> Des copies de fichiers pouvant être facilement recréées sont rarement consultées. Quelle classe S3 est la MOINS chère tout en offrant un accès en millisecondes ?</p><div class="opts"><button type="button" class="opt" data-l="A">A. S3 One Zone-IA</button><button type="button" class="opt" data-l="B">B. S3 Standard</button><button type="button" class="opt" data-l="C">C. S3 Intelligent-Tiering</button><button type="button" class="opt" data-l="D">D. S3 Standard-IA</button></div><button type="button" class="check" disabled>Valider et voir la réponse</button><span class="hint">Choisissez une réponse</span><div class="fb" hidden></div><div class="ans" hidden><p>✅ <b>Réponse : A</b> — Données recréables + accès rare = One Zone-IA, environ 20 % moins cher que Standard-IA.</p></div></div><div class="qcard" data-answer="D"><p class="qt"><span class="qid">32.</span> Une entreprise doit conserver des archives 10 ans au coût le plus bas possible ; un délai de récupération de 48 heures est acceptable. Quelle classe ?</p><div class="opts"><button type="button" class="opt" data-l="A">A. S3 Standard-IA</button><button type="button" class="opt" data-l="B">B. S3 Glacier Instant Retrieval</button><button type="button" class="opt" data-l="C">C. S3 One Zone-IA</button><button type="button" class="opt" data-l="D">D. S3 Glacier Deep Archive</button></div><button type="button" class="check" disabled>Valider et voir la réponse</button><span class="hint">Choisissez une réponse</span><div class="fb" hidden></div><div class="ans" hidden><p>✅ <b>Réponse : D</b> — Deep Archive est la classe la moins chère ; récupération en 12 à 48 h.</p></div></div><div class="qcard" data-answer="B"><p class="qt"><span class="qid">33.</span> Quelle est la portée d'un volume Amazon EBS ?</p><div class="opts"><button type="button" class="opt" data-l="A">A. Une Région</button><button type="button" class="opt" data-l="B">B. Une zone de disponibilité</button><button type="button" class="opt" data-l="C">C. Mondiale</button><button type="button" class="opt" data-l="D">D. Une Edge Location</button></div><button type="button" class="check" disabled>Valider et voir la réponse</button><span class="hint">Choisissez une réponse</span><div class="fb" hidden></div><div class="ans" hidden><p>✅ <b>Réponse : B</b> — Un volume EBS est lié à une AZ. Pour le déplacer : snapshot puis restauration dans une autre AZ.</p></div></div><div class="qcard" data-answer="D"><p class="qt"><span class="qid">34.</span> Des centaines d'instances EC2 Linux réparties sur plusieurs AZ doivent lire et écrire dans le même système de fichiers. Quel service ?</p><div class="opts"><button type="button" class="opt" data-l="A">A. Amazon EBS</button><button type="button" class="opt" data-l="B">B. Instance Store</button><button type="button" class="opt" data-l="C">C. Amazon FSx for Windows File Server</button><button type="button" class="opt" data-l="D">D. Amazon EFS</button></div><button type="button" class="check" disabled>Valider et voir la réponse</button><span class="hint">Choisissez une réponse</span><div class="fb" hidden></div><div class="ans" hidden><p>✅ <b>Réponse : D</b> — EFS = NFS partagé, multi-AZ, pour Linux. Piège : FSx for Windows est pour SMB/Windows ; EBS est attaché à une instance.</p></div></div><div class="qcard" data-answer="B"><p class="qt"><span class="qid">35.</span> Pour quelle charge de travail les instances Spot sont-elles le mieux adaptées ?</p><div class="opts"><button type="button" class="opt" data-l="A">A. Une base de données de production</button><button type="button" class="opt" data-l="B">B. Un traitement d'images par lots pouvant être interrompu et relancé</button><button type="button" class="opt" data-l="C">C. Une API de paiement en temps réel</button><button type="button" class="opt" data-l="D">D. Un contrôleur de domaine Active Directory</button></div><button type="button" class="check" disabled>Valider et voir la réponse</button><span class="hint">Choisissez une réponse</span><div class="fb" hidden></div><div class="ans" hidden><p>✅ <b>Réponse : B</b> — Spot convient aux tâches tolérantes aux interruptions. Jamais pour une base de production ou un service critique.</p></div></div><div class="qcard" data-answer="B"><p class="qt"><span class="qid">36.</span> Quelle est la durée maximale d'exécution d'une fonction AWS Lambda ?</p><div class="opts"><button type="button" class="opt" data-l="A">A. 5 minutes</button><button type="button" class="opt" data-l="B">B. 15 minutes</button><button type="button" class="opt" data-l="C">C. 1 heure</button><button type="button" class="opt" data-l="D">D. Illimitée</button></div><button type="button" class="check" disabled>Valider et voir la réponse</button><span class="hint">Choisissez une réponse</span><div class="fb" hidden></div><div class="ans" hidden><p>✅ <b>Réponse : B</b> — 15 minutes maximum. Au-delà : EC2, ECS/Fargate ou AWS Batch.</p></div></div><div class="qcard" data-answer="C"><p class="qt"><span class="qid">37.</span> Une banque exige un module matériel de sécurité dédié à un seul client, dont elle contrôle entièrement les clés. Quel service ?</p><div class="opts"><button type="button" class="opt" data-l="A">A. AWS KMS</button><button type="button" class="opt" data-l="B">B. AWS Secrets Manager</button><button type="button" class="opt" data-l="C">C. AWS CloudHSM</button><button type="button" class="opt" data-l="D">D. AWS Certificate Manager</button></div><button type="button" class="check" disabled>Valider et voir la réponse</button><span class="hint">Choisissez une réponse</span><div class="fb" hidden></div><div class="ans" hidden><p>✅ <b>Réponse : C</b> — CloudHSM = HSM matériel dédié (single-tenant). KMS est un service managé partagé.</p></div></div><div class="qcard" data-answer="A,C"><p class="qt"><span class="qid">38.</span> Quels avantages AWS Shield Advanced apporte-t-il par rapport à Shield Standard ? (Choisissez-en deux.)</p><div class="opts"><button type="button" class="opt" data-l="A">A. Une protection des coûts liés aux pics de mise à l'échelle pendant une attaque DDoS</button><button type="button" class="opt" data-l="B">B. Il est gratuit pour tous les clients</button><button type="button" class="opt" data-l="C">C. Un accès 24/7 à l'équipe Shield Response Team (SRT)</button><button type="button" class="opt" data-l="D">D. Le blocage des injections SQL sans configuration</button><button type="button" class="opt" data-l="E">E. L'application automatique des correctifs sur EC2</button></div><button type="button" class="check" disabled>Valider et voir la réponse</button><span class="hint">Choisissez 2 réponses</span><div class="fb" hidden></div><div class="ans" hidden><p>✅ <b>Réponse : A, C</b> — Shield Advanced : protection des coûts DDoS + SRT 24/7 + WAF inclus. Il est payant ; Shield Standard est gratuit.</p></div></div><div class="qcard" data-answer="B"><p class="qt"><span class="qid">39.</span> Quel est l'effet d'une Service Control Policy (SCP) dans AWS Organizations ?</p><div class="opts"><button type="button" class="opt" data-l="A">A. Elle accorde des permissions aux utilisateurs IAM</button><button type="button" class="opt" data-l="B">B. Elle définit les permissions MAXIMALES disponibles dans les comptes concernés</button><button type="button" class="opt" data-l="C">C. Elle s'applique aussi au compte de gestion</button><button type="button" class="opt" data-l="D">D. Elle remplace les politiques IAM</button></div><button type="button" class="check" disabled>Valider et voir la réponse</button><span class="hint">Choisissez une réponse</span><div class="fb" hidden></div><div class="ans" hidden><p>✅ <b>Réponse : B</b> — Une SCP fixe un plafond ; elle n'accorde rien et ne s'applique pas au compte de gestion.</p></div></div><div class="qcard" data-answer="C"><p class="qt"><span class="qid">40.</span> Quel pilier du Well-Architected Framework porte sur la capacité d'une charge de travail à se rétablir après une panne ?</p><div class="opts"><button type="button" class="opt" data-l="A">A. Efficacité des performances</button><button type="button" class="opt" data-l="B">B. Excellence opérationnelle</button><button type="button" class="opt" data-l="C">C. Fiabilité</button><button type="button" class="opt" data-l="D">D. Sécurité</button></div><button type="button" class="check" disabled>Valider et voir la réponse</button><span class="hint">Choisissez une réponse</span><div class="fb" hidden></div><div class="ans" hidden><p>✅ <b>Réponse : C</b> — Fiabilité = se rétablir des pannes, scaler horizontalement, tester la reprise.</p></div></div><div class="qcard" data-answer="D"><p class="qt"><span class="qid">41.</span> Quelle perspective du AWS Cloud Adoption Framework couvre la formation des équipes, la culture et la gestion du changement ?</p><div class="opts"><button type="button" class="opt" data-l="A">A. Business</button><button type="button" class="opt" data-l="B">B. Gouvernance</button><button type="button" class="opt" data-l="C">C. Plateforme</button><button type="button" class="opt" data-l="D">D. Personnes (People)</button></div><button type="button" class="check" disabled>Valider et voir la réponse</button><span class="hint">Choisissez une réponse</span><div class="fb" hidden></div><div class="ans" hidden><p>✅ <b>Réponse : D</b> — La perspective People couvre culture, formation, structure et changement.</p></div></div><div class="qcard" data-answer="A"><p class="qt"><span class="qid">42.</span> Une entreprise migre sa base MySQL auto-gérée vers Amazon RDS for MySQL sans modifier le code de l'application. Quelle stratégie ?</p><div class="opts"><button type="button" class="opt" data-l="A">A. Replatform</button><button type="button" class="opt" data-l="B">B. Rehost</button><button type="button" class="opt" data-l="C">C. Refactor</button><button type="button" class="opt" data-l="D">D. Repurchase</button></div><button type="button" class="check" disabled>Valider et voir la réponse</button><span class="hint">Choisissez une réponse</span><div class="fb" hidden></div><div class="ans" hidden><p>✅ <b>Réponse : A</b> — Replatform = optimisation sans changer l'architecture. Rehost serait une base MySQL installée telle quelle sur EC2.</p></div></div><div class="qcard" data-answer="C"><p class="qt"><span class="qid">43.</span> Lequel de ces services est un service GLOBAL (non rattaché à une Région) ?</p><div class="opts"><button type="button" class="opt" data-l="A">A. Amazon EC2</button><button type="button" class="opt" data-l="B">B. Amazon RDS</button><button type="button" class="opt" data-l="C">C. AWS IAM</button><button type="button" class="opt" data-l="D">D. Amazon EBS</button></div><button type="button" class="check" disabled>Valider et voir la réponse</button><span class="hint">Choisissez une réponse</span><div class="fb" hidden></div><div class="ans" hidden><p>✅ <b>Réponse : C</b> — IAM est global. EC2, RDS sont régionaux ; EBS est lié à une AZ.</p></div></div><div class="qcard" data-answer="A"><p class="qt"><span class="qid">44.</span> Une entreprise veut exécuter des services AWS dans son propre data center avec les mêmes API qu'AWS. Quel service ?</p><div class="opts"><button type="button" class="opt" data-l="A">A. AWS Outposts</button><button type="button" class="opt" data-l="B">B. AWS Local Zones</button><button type="button" class="opt" data-l="C">C. AWS Wavelength</button><button type="button" class="opt" data-l="D">D. AWS Direct Connect</button></div><button type="button" class="check" disabled>Valider et voir la réponse</button><span class="hint">Choisissez une réponse</span><div class="fb" hidden></div><div class="ans" hidden><p>✅ <b>Réponse : A</b> — Outposts installe l'infrastructure AWS chez le client. Local Zones restent chez AWS, près d'une ville.</p></div></div><div class="qcard" data-answer="D"><p class="qt"><span class="qid">45.</span> Une entreprise veut réduire la latence pour des utilisateurs du monde entier en mettant en cache les vidéos et les images près d'eux. Quel service ?</p><div class="opts"><button type="button" class="opt" data-l="A">A. Amazon Route 53</button><button type="button" class="opt" data-l="B">B. AWS Global Accelerator</button><button type="button" class="opt" data-l="C">C. AWS Direct Connect</button><button type="button" class="opt" data-l="D">D. Amazon CloudFront</button></div><button type="button" class="check" disabled>Valider et voir la réponse</button><span class="hint">Choisissez une réponse</span><div class="fb" hidden></div><div class="ans" hidden><p>✅ <b>Réponse : D</b> — CloudFront met en cache le contenu dans les Edge Locations. Piège : Global Accelerator ne met rien en cache.</p></div></div><div class="qcard" data-answer="D"><p class="qt"><span class="qid">46.</span> Quel plan de support inclut un Technical Account Manager (TAM) DÉSIGNÉ ?</p><div class="opts"><button type="button" class="opt" data-l="A">A. Business</button><button type="button" class="opt" data-l="B">B. Developer</button><button type="button" class="opt" data-l="C">C. Enterprise On-Ramp</button><button type="button" class="opt" data-l="D">D. Enterprise</button></div><button type="button" class="check" disabled>Valider et voir la réponse</button><span class="hint">Choisissez une réponse</span><div class="fb" hidden></div><div class="ans" hidden><p>✅ <b>Réponse : D</b> — TAM désigné = Enterprise. Enterprise On-Ramp donne accès à un pool de TAM.</p></div></div><div class="qcard" data-answer="A,B"><p class="qt"><span class="qid">47.</span> Quels sont les avantages de la facturation consolidée d'AWS Organizations ? (Choisissez-en deux.)</p><div class="opts"><button type="button" class="opt" data-l="A">A. Une seule facture pour tous les comptes</button><button type="button" class="opt" data-l="B">B. Des remises sur volume calculées sur l'usage combiné des comptes</button><button type="button" class="opt" data-l="C">C. Un plan de support Business gratuit</button><button type="button" class="opt" data-l="D">D. La gratuité du transfert de données entre comptes</button><button type="button" class="opt" data-l="E">E. Des instances réservées illimitées</button></div><button type="button" class="check" disabled>Valider et voir la réponse</button><span class="hint">Choisissez 2 réponses</span><div class="fb" hidden></div><div class="ans" hidden><p>✅ <b>Réponse : A, B</b> — Facture unique + remises sur volume cumulées (et partage des RI/Savings Plans). La facturation consolidée est gratuite.</p></div></div><div class="qcard" data-answer="B"><p class="qt"><span class="qid">48.</span> Un analyste veut exécuter des requêtes SQL directement sur des fichiers stockés dans Amazon S3, sans gérer de serveur. Quel service ?</p><div class="opts"><button type="button" class="opt" data-l="A">A. Amazon Redshift</button><button type="button" class="opt" data-l="B">B. Amazon Athena</button><button type="button" class="opt" data-l="C">C. Amazon EMR</button><button type="button" class="opt" data-l="D">D. Amazon RDS</button></div><button type="button" class="check" disabled>Valider et voir la réponse</button><span class="hint">Choisissez une réponse</span><div class="fb" hidden></div><div class="ans" hidden><p>✅ <b>Réponse : B</b> — Athena = SQL serverless sur S3. Redshift est un entrepôt de données à alimenter.</p></div></div><div class="qcard" data-answer="C"><p class="qt"><span class="qid">49.</span> Une équipe atteint la limite du nombre d'instances EC2 autorisées dans une Région. Quel service permet de demander une augmentation ?</p><div class="opts"><button type="button" class="opt" data-l="A">A. AWS Trusted Advisor</button><button type="button" class="opt" data-l="B">B. AWS Config</button><button type="button" class="opt" data-l="C">C. Service Quotas</button><button type="button" class="opt" data-l="D">D. AWS Health Dashboard</button></div><button type="button" class="check" disabled>Valider et voir la réponse</button><span class="hint">Choisissez une réponse</span><div class="fb" hidden></div><div class="ans" hidden><p>✅ <b>Réponse : C</b> — Service Quotas permet de consulter et demander l'augmentation des limites. Trusted Advisor ne fait que signaler les limites proches.</p></div></div><div class="qcard" data-answer="A"><p class="qt"><span class="qid">50.</span> Quel service informe un client qu'une maintenance planifiée par AWS va affecter l'une de SES instances EC2 ?</p><div class="opts"><button type="button" class="opt" data-l="A">A. AWS Health Dashboard</button><button type="button" class="opt" data-l="B">B. Amazon CloudWatch</button><button type="button" class="opt" data-l="C">C. AWS Trusted Advisor</button><button type="button" class="opt" data-l="D">D. AWS CloudTrail</button></div><button type="button" class="check" disabled>Valider et voir la réponse</button><span class="hint">Choisissez une réponse</span><div class="fb" hidden></div><div class="ans" hidden><p>✅ <b>Réponse : A</b> — AWS Health Dashboard montre les événements qui affectent VOS ressources. CloudWatch surveille les métriques.</p></div></div><hr /><p><button type="button" class="keybtn" disabled>📋 Afficher le corrigé complet (disponible quand toutes les questions sont validées)</button></p><div class="keybox" hidden><h1>✅ CORRIGÉ DÉTAILLÉ</h1>
+<table>
+<thead>
+<tr>
+<th>#</th>
+<th>Rép.</th>
+<th>Explication et piège</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td><strong>D</strong></td>
+<td>WAF filtre la couche 7 (SQLi, XSS). Piège : Shield protège contre le DDoS, pas contre l'injection SQL.</td>
+</tr>
+<tr>
+<td>2</td>
+<td><strong>A</strong></td>
+<td>Multi-AZ = disponibilité. Piège : le standby ne sert pas les lectures ; pour la performance, ce sont les Read Replicas.</td>
+</tr>
+<tr>
+<td>3</td>
+<td><strong>B</strong></td>
+<td>Sur EC2 (IaaS), l'OS invité est géré par le client. AWS s'occupe de l'hyperviseur et du matériel.</td>
+</tr>
+<tr>
+<td>4</td>
+<td><strong>C</strong></td>
+<td>Business est le premier plan avec téléphone 24/7. Piège : Developer = e-mail, heures ouvrables seulement.</td>
+</tr>
+<tr>
+<td>5</td>
+<td><strong>C</strong></td>
+<td>Les Read Replicas déchargent les lectures. Piège classique : Multi-AZ ne change rien aux performances de lecture.</td>
+</tr>
+<tr>
+<td>6</td>
+<td><strong>B</strong></td>
+<td>GuardDuty détecte une activité malveillante en cours (logs VPC Flow, DNS, CloudTrail).</td>
+</tr>
+<tr>
+<td>7</td>
+<td><strong>A</strong></td>
+<td>Inspector recherche les vulnérabilités logicielles. Piège : GuardDuty détecte des menaces, pas des CVE.</td>
+</tr>
+<tr>
+<td>8</td>
+<td><strong>D</strong></td>
+<td>Seul le Compute Savings Plan couvre EC2, Fargate et Lambda, toutes familles et Régions.</td>
+</tr>
+<tr>
+<td>9</td>
+<td><strong>B</strong></td>
+<td>Security Group : avec état, Allow uniquement, niveau instance. Les autres propositions décrivent une NACL.</td>
+</tr>
+<tr>
+<td>10</td>
+<td><strong>A, C</strong></td>
+<td>CloudFront (cache) et Route 53 (DNS) s'appuient sur les Edge Locations, tout comme Shield et WAF.</td>
+</tr>
+<tr>
+<td>11</td>
+<td><strong>C</strong></td>
+<td>Lambda est serverless : AWS gère l'OS et le runtime. Le client garde code, permissions et données.</td>
+</tr>
+<tr>
+<td>12</td>
+<td><strong>A</strong></td>
+<td>Credential Report = niveau compte, tous les utilisateurs. Piège : Access Advisor montre les services utilisés par une identité.</td>
+</tr>
+<tr>
+<td>13</td>
+<td><strong>B</strong></td>
+<td>Le client choisit la Région ; AWS ne déplace pas les données sans action du client.</td>
+</tr>
+<tr>
+<td>14</td>
+<td><strong>C</strong></td>
+<td>Tous les contrôles Trusted Advisor dès le plan Business. Basic et Developer n'ont que les contrôles de base.</td>
+</tr>
+<tr>
+<td>15</td>
+<td><strong>B</strong></td>
+<td>Budgets envoie des alertes sur les coûts réels ou prévus. Piège : Cost Explorer analyse mais n'alerte pas.</td>
+</tr>
+<tr>
+<td>16</td>
+<td><strong>A</strong></td>
+<td>Rien n'est encore déployé : seul le Pricing Calculator permet d'estimer. Cost Explorer s'appuie sur des dépenses existantes.</td>
+</tr>
+<tr>
+<td>17</td>
+<td><strong>B</strong></td>
+<td>Fermer le compte est réservé au root, comme modifier les paramètres du compte ou restaurer des permissions IAM.</td>
+</tr>
+<tr>
+<td>18</td>
+<td><strong>D</strong></td>
+<td>Le trafic entrant est gratuit. Sortie vers Internet, inter-Régions et inter-AZ sont facturés.</td>
+</tr>
+<tr>
+<td>19</td>
+<td><strong>C</strong></td>
+<td>Élasticité = ajuster automatiquement à la hausse ET à la baisse. Piège : la scalabilité seule n'implique pas la réduction.</td>
+</tr>
+<tr>
+<td>20</td>
+<td><strong>B</strong></td>
+<td>Les Dedicated Hosts donnent la visibilité sur les sockets et cœurs physiques (BYOL). Les instances dédiées ne le permettent pas.</td>
+</tr>
+<tr>
+<td>21</td>
+<td><strong>A</strong></td>
+<td>Configurer les accès aux données (politiques de bucket, ACL, Block Public Access) est toujours la responsabilité du client.</td>
+</tr>
+<tr>
+<td>22</td>
+<td><strong>C</strong></td>
+<td>Minimum 3 AZ par Région (certaines en ont plus).</td>
+</tr>
+<tr>
+<td>23</td>
+<td><strong>B</strong></td>
+<td>Secrets Manager = rotation automatique. Piège : Parameter Store stocke mais ne fait pas de rotation native ; KMS gère des clés de chiffrement.</td>
+</tr>
+<tr>
+<td>24</td>
+<td><strong>D</strong></td>
+<td>Artifact fournit les rapports de conformité d'AWS. Piège : Audit Manager prépare VOS audits.</td>
+</tr>
+<tr>
+<td>25</td>
+<td><strong>A</strong></td>
+<td>CloudTrail enregistre qui a fait quel appel d'API. Piège : Config montre l'état de la ressource, pas l'auteur.</td>
+</tr>
+<tr>
+<td>26</td>
+<td><strong>D</strong></td>
+<td>Config évalue la conformité et garde l'historique de configuration.</td>
+</tr>
+<tr>
+<td>27</td>
+<td><strong>B</strong></td>
+<td>ELB répartit le trafic entre instances et AZ. Piège : Route 53 fait du routage DNS, pas de l'équilibrage de charge au niveau des instances.</td>
+</tr>
+<tr>
+<td>28</td>
+<td><strong>B</strong></td>
+<td>SNS = publication/abonnement (fan-out). SQS = file d'attente consommée par un traitement. SES = e-mails uniquement.</td>
+</tr>
+<tr>
+<td>29</td>
+<td><strong>A</strong></td>
+<td>Site statique = hébergement de site web S3 (souvent avec CloudFront). Pas de serveur à gérer.</td>
+</tr>
+<tr>
+<td>30</td>
+<td><strong>C</strong></td>
+<td>Standard-IA : accès rare, millisecondes, multi-AZ. Piège : One Zone-IA ne résiste pas à la perte d'une AZ.</td>
+</tr>
+<tr>
+<td>31</td>
+<td><strong>A</strong></td>
+<td>Données recréables + accès rare = One Zone-IA, environ 20 % moins cher que Standard-IA.</td>
+</tr>
+<tr>
+<td>32</td>
+<td><strong>D</strong></td>
+<td>Deep Archive est la classe la moins chère ; récupération en 12 à 48 h.</td>
+</tr>
+<tr>
+<td>33</td>
+<td><strong>B</strong></td>
+<td>Un volume EBS est lié à une AZ. Pour le déplacer : snapshot puis restauration dans une autre AZ.</td>
+</tr>
+<tr>
+<td>34</td>
+<td><strong>D</strong></td>
+<td>EFS = NFS partagé, multi-AZ, pour Linux. Piège : FSx for Windows est pour SMB/Windows ; EBS est attaché à une instance.</td>
+</tr>
+<tr>
+<td>35</td>
+<td><strong>B</strong></td>
+<td>Spot convient aux tâches tolérantes aux interruptions. Jamais pour une base de production ou un service critique.</td>
+</tr>
+<tr>
+<td>36</td>
+<td><strong>B</strong></td>
+<td>15 minutes maximum. Au-delà : EC2, ECS/Fargate ou AWS Batch.</td>
+</tr>
+<tr>
+<td>37</td>
+<td><strong>C</strong></td>
+<td>CloudHSM = HSM matériel dédié (single-tenant). KMS est un service managé partagé.</td>
+</tr>
+<tr>
+<td>38</td>
+<td><strong>A, C</strong></td>
+<td>Shield Advanced : protection des coûts DDoS + SRT 24/7 + WAF inclus. Il est payant ; Shield Standard est gratuit.</td>
+</tr>
+<tr>
+<td>39</td>
+<td><strong>B</strong></td>
+<td>Une SCP fixe un plafond ; elle n'accorde rien et ne s'applique pas au compte de gestion.</td>
+</tr>
+<tr>
+<td>40</td>
+<td><strong>C</strong></td>
+<td>Fiabilité = se rétablir des pannes, scaler horizontalement, tester la reprise.</td>
+</tr>
+<tr>
+<td>41</td>
+<td><strong>D</strong></td>
+<td>La perspective People couvre culture, formation, structure et changement.</td>
+</tr>
+<tr>
+<td>42</td>
+<td><strong>A</strong></td>
+<td>Replatform = optimisation sans changer l'architecture. Rehost serait une base MySQL installée telle quelle sur EC2.</td>
+</tr>
+<tr>
+<td>43</td>
+<td><strong>C</strong></td>
+<td>IAM est global. EC2, RDS sont régionaux ; EBS est lié à une AZ.</td>
+</tr>
+<tr>
+<td>44</td>
+<td><strong>A</strong></td>
+<td>Outposts installe l'infrastructure AWS chez le client. Local Zones restent chez AWS, près d'une ville.</td>
+</tr>
+<tr>
+<td>45</td>
+<td><strong>D</strong></td>
+<td>CloudFront met en cache le contenu dans les Edge Locations. Piège : Global Accelerator ne met rien en cache.</td>
+</tr>
+<tr>
+<td>46</td>
+<td><strong>D</strong></td>
+<td>TAM désigné = Enterprise. Enterprise On-Ramp donne accès à un pool de TAM.</td>
+</tr>
+<tr>
+<td>47</td>
+<td><strong>A, B</strong></td>
+<td>Facture unique + remises sur volume cumulées (et partage des RI/Savings Plans). La facturation consolidée est gratuite.</td>
+</tr>
+<tr>
+<td>48</td>
+<td><strong>B</strong></td>
+<td>Athena = SQL serverless sur S3. Redshift est un entrepôt de données à alimenter.</td>
+</tr>
+<tr>
+<td>49</td>
+<td><strong>C</strong></td>
+<td>Service Quotas permet de consulter et demander l'augmentation des limites. Trusted Advisor ne fait que signaler les limites proches.</td>
+</tr>
+<tr>
+<td>50</td>
+<td><strong>A</strong></td>
+<td>AWS Health Dashboard montre les événements qui affectent VOS ressources. CloudWatch surveille les métriques.</td>
+</tr>
+</tbody>
+</table>
+<h3>Grille d'auto-évaluation</h3>
+<table>
+<thead>
+<tr>
+<th>Score</th>
+<th>Interprétation</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>45–50</td>
+<td>Excellent — les pièges ne vous piègent plus</td>
+</tr>
+<tr>
+<td>38–44</td>
+<td>Bon — revoyez vos erreurs dans la fiche mémo (fichier 04, tableau des paires de services)</td>
+</tr>
+<tr>
+<td>30–37</td>
+<td>Moyen — relisez le guide de cours sur les domaines concernés</td>
+</tr>
+<tr>
+<td>&lt; 30</td>
+<td>Reprenez le guide de cours et les cas pratiques visuels (fichier 05) avant de recommencer</td>
+</tr>
+</tbody>
+</table></div></div><script>
+(function(){
+function upd(q){
+  const cards=[...q.querySelectorAll('.qcard[data-answer]')];
+  const done=cards.filter(c=>c.classList.contains('done'));
+  const ok=done.filter(c=>c.dataset.ok==='1');
+  const sc=q.querySelector('.sc');
+  if(sc){const pct=done.length?Math.round(ok.length*100/done.length):0;
+    sc.textContent='Score : '+ok.length+' / '+done.length+' répondues ('+pct+' %) — '+(cards.length-done.length)+' restantes';}
+  const kb=q.querySelector('.keybtn');
+  if(kb){kb.disabled=done.length<cards.length;}
+}
+document.querySelectorAll('.quiz').forEach(q=>{
+  q.querySelectorAll('.qcard').forEach(card=>{
+    const ans=(card.dataset.answer||'').split(',').filter(Boolean),need=ans.length;
+    const opts=[...card.querySelectorAll('.opt')],btn=card.querySelector('.check'),out=card.querySelector('.ans'),fb=card.querySelector('.fb'),ta=card.querySelector('textarea');
+    if(ta){
+      ta.addEventListener('input',()=>{btn.disabled=ta.value.trim().length<2;});
+      btn.addEventListener('click',()=>{out.hidden=false;btn.hidden=true;ta.readOnly=true;card.classList.add('done');const h=card.querySelector('.hint');if(h)h.hidden=true;});
+      return;
+    }
+    opts.forEach(o=>o.addEventListener('click',()=>{
+      if(card.classList.contains('done'))return;
+      if(need===1){opts.forEach(x=>x.classList.remove('sel'));o.classList.add('sel');}
+      else o.classList.toggle('sel');
+      btn.disabled=card.querySelectorAll('.opt.sel').length!==need;
+    }));
+    btn.addEventListener('click',()=>{
+      const sel=opts.filter(x=>x.classList.contains('sel')).map(x=>x.dataset.l);
+      const good=sel.length===need&&sel.every(l=>ans.includes(l));
+      opts.forEach(x=>{if(ans.includes(x.dataset.l))x.classList.add('good');else if(x.classList.contains('sel'))x.classList.add('bad');});
+      fb.hidden=false;fb.textContent=good?'✅ Bonne réponse !':'❌ Mauvaise réponse — la bonne réponse est en vert.';fb.className='fb '+(good?'ok':'ko');
+      card.classList.add('done');card.dataset.ok=good?'1':'0';out.hidden=false;btn.hidden=true;
+      const h=card.querySelector('.hint');if(h)h.hidden=true;upd(q);
+    });
+  });
+  const rs=q.querySelector('.reset');
+  if(rs)rs.addEventListener('click',()=>{
+    if(!confirm('Effacer toutes vos réponses de cette partie ?'))return;
+    q.querySelectorAll('.qcard').forEach(card=>{
+      card.classList.remove('done');delete card.dataset.ok;
+      card.querySelectorAll('.opt').forEach(o=>o.classList.remove('sel','good','bad'));
+      const b=card.querySelector('.check');b.hidden=false;b.disabled=true;
+      card.querySelector('.ans').hidden=true;const f=card.querySelector('.fb');if(f)f.hidden=true;
+      const h=card.querySelector('.hint');if(h)h.hidden=false;
+      const t=card.querySelector('textarea');if(t){t.value='';t.readOnly=false;}
+    });
+    const k=q.querySelector('.keybox');if(k)k.hidden=true;upd(q);
+  });
+  const kb=q.querySelector('.keybtn');
+  if(kb)kb.addEventListener('click',()=>{q.querySelector('.keybox').hidden=false;kb.hidden=true;});
+  const tb=q.querySelector('.tstart');
+  if(tb)tb.addEventListener('click',()=>{
+    let s=90*60;const el=q.querySelector('.timer');tb.disabled=true;
+    const it=setInterval(()=>{s--;el.textContent='⏱ '+String(Math.floor(s/60)).padStart(2,'0')+':'+String(s%60).padStart(2,'0');
+      if(s<=0){clearInterval(it);el.textContent='⏱ Temps écoulé !';alert('Les 90 minutes sont écoulées !');}},1000);
+  });
+  upd(q);
+});
+})();
+</script></body></html>
